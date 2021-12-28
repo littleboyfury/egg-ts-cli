@@ -6,6 +6,7 @@ import { Command } from 'commander'
 
 const program = new Command()
 
+// 获取输出路径，默认当前文件夹
 program
   .version(require('./package').version)
   .usage('[options] <directories>')
@@ -14,21 +15,27 @@ program
 
 program.parse()
 const opts = program.opts()
-console.log(opts, 'opts')
 
+// 用户自定义的值
 inquirer.prompt([
+
+  // 项目名
   {
     type: 'input',
     name: 'name',
     message: 'Project name?',
     default: 'egg-ts-demo',
   },
+
+  // 作者
   {
     type: 'input',
     name: 'author',
     message: 'Author name?',
     default: 'skyfury',
   },
+
+  // 描述
   {
     type: 'input',
     name: 'description',
@@ -43,8 +50,6 @@ inquirer.prompt([
   // },
 ])
   .then(anwsers => {
-    console.log(anwsers)
-    // 根据用户回答的结果生成文件
 
     // 模板目录
     const tmplDir = path.join(__dirname, 'templates')
@@ -52,21 +57,21 @@ inquirer.prompt([
     const destDir = path.join(process.cwd(), opts.dest)
 
     const source: string[] = []
+
+    // 读取路径中的所有文件，放入 source 中
     readFiles(tmplDir, source)
 
-    // console.log(fs.readdirSync(tmplDir, { withFileTypes: true }))
-    // fs.writeFileSync(path.join(destDir, 'a.txt'), 'hhh')
-    // fs.mkdirSync(path.join(destDir, '/a/b/c/a.txt'), { recursive: true })
-    // if (!fs.existsSync(destDir)) {
-    //   fs.mkdirSync(destDir)
-    // }
-
-    // 将模板下的文件全部转换到目标目录
     source.forEach(file => {
+
+      // 生成目标路径
       const destPath = file.replace(tmplDir, destDir)
+
       if (!fs.existsSync(path.dirname(destPath))) {
+
+        // 如果文件夹不存在，这创建文件夹，recursive 可以递归创建
         fs.mkdirSync(path.dirname(destPath), { recursive: true })
       }
+
       // 通过模板引擎渲染文件
       ejs.renderFile(file, anwsers, (err, result) => {
         if (err) throw err
@@ -77,6 +82,11 @@ inquirer.prompt([
     })
   })
 
+/**
+ * 读取文件中所有文件的绝对路径
+ * @param dir 目前文件夹
+ * @param source 文件路径保存
+ */
 function readFiles(dir: string, source: string[]) {
   const files = fs.readdirSync(dir, { withFileTypes: true })
   files.forEach(file => {
