@@ -10,7 +10,6 @@ program
   .version(require('./package').version)
   .usage('[options] <files|directories|globs>')
   .showHelpAfterError()
-  .option('-V, --verbose', 'verbose logging', false)
   .option('-D, --dest [type]', 'destination dir', '.')
 
 program.parse()
