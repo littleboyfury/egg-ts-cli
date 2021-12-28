@@ -1,13 +1,13 @@
 {
   "name": "@skyfury/egg-ts-cli",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "egg typescript cli",
   "main": "index.js",
   "bin": {
     "egg-ts": "index.js"
   },
   "scripts": {
-    "build": "tsc && node build/build.js",
+    "build": "tsc",
     "clean": "tsc --build --clean && rm -rf output"
   },
   "homepage": "https://github.com/littleboyfury/egg-ts-cli",
