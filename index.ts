@@ -8,7 +8,7 @@ const program = new Command()
 
 program
   .version(require('./package').version)
-  .usage('[options] <files|directories|globs>')
+  .usage('[options] <directories>')
   .showHelpAfterError()
   .option('-D, --dest [type]', 'destination dir', '.')
 
@@ -35,12 +35,12 @@ inquirer.prompt([
     message: 'Description?',
     default: 'egg typescript demo',
   },
-  {
-    type: 'input',
-    name: 'license',
-    message: 'License?',
-    default: 'MIT',
-  },
+  // {
+  //   type: 'input',
+  //   name: 'license',
+  //   message: 'License?',
+  //   default: 'MIT',
+  // },
 ])
   .then(anwsers => {
     console.log(anwsers)

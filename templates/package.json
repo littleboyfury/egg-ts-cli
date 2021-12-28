@@ -67,5 +67,5 @@
     ]
   },
   "author": "<%= author %>",
-  "license": "<%= license %>"
+  "license": "MIT"
 }

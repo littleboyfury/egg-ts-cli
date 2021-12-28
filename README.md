@@ -6,25 +6,39 @@
 [![Ecmascript](https://img.shields.io/badge/Ecmascript-2020+-green.svg)](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/)
 </div>
 
-## install
+## Install
 ```bash
 npm i @skyfury/egg-ts-cli -g
 ```
 
-##use
+## Use
 
 ```bash
 
-Usage: egg-ts [options] <files|directories|globs>
+Usage: index [options] <directories>
 
 Options:
   -V, --version      output the version number
-  -V, --verbose      verbose logging (default: false)
   -D, --dest [type]  destination dir (default: ".")
   -h, --help         display help for command
 
 # Generate to current directory
 egg-ts
+
+# install package
+npm install
+
+## run package
+npm run dev
+
 # Generate to projectDir directory
 egg-ts -D projectDir
+
+cd projectDir
+
+# install package
+npm install
+
+## run package
+npm run dev
 ```
