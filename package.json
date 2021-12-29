@@ -1,6 +1,6 @@
 {
   "name": "@skyfury/egg-ts-cli",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "egg typescript cli",
   "main": "index.js",
   "bin": {
@@ -45,5 +45,8 @@
     "eggjs",
     "typescript",
     "cli"
-  ]
+  ],
+  "engines": {
+    "node": ">=14"
+  }
 }
